@@ -1,5 +1,4 @@
 import java.awt.geom.*;
-import javax.swing.JApplet;
 import java.awt.*; //The Color Class is included
 import java.awt.EventQueue.*;
 import java.awt.event.*;
@@ -21,11 +20,11 @@ public class CatSnake extends JFrame{
     //These are the starting positions with the x component.
     int appletHeight;
     int appletWidth;
-    public CatSnake(){ //Might need to make this method static but I'm keeping it object oriented for right now
+    public CatSnake(){ //Constructor
         this.setSize(600, 400);
         Dimension appletSize = this.getSize();
-        appletHeight = appletSize.height;
-        appletWidth = appletSize.width;
+        appletHeight = appletSize.height; //I just want to avoid hard coding
+        appletWidth = appletSize.width; //I just want to avoid hard coding
     }
     public void update(Graphics g){ //Might need to make this method static but I'm keeping it object oriented for right now
         paint(g);
@@ -36,6 +35,7 @@ public class CatSnake extends JFrame{
             Rectangle2D.Float grassRectangle = new Rectangle2D.Float(0, appletHeight/2, appletWidth, appletHeight/2);
             myGraphics2D.setColor(Color.green);
             myGraphics2D.fill(grassRectangle);
+            GradientPaint scannerFalzone = new GradientPaint(0,0, Color.CYAN, appletWidth-100, appletHeight-100, Color.WHITE, false);
         }
     }
     public static void main (String[] args){
