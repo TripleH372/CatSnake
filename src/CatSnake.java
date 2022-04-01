@@ -52,6 +52,15 @@ public class CatSnake extends JFrame{
             myGraphics2D.fill(new Ellipse2D.Float(appletWidth/10, appletHeight/10, 60f, 60f));
             is_this_the_first_time=false; //Change to false because after the first time this won't be the first time anymore
         }
+        try{ //Try portion to handle the animation portion
+            BasicStroke myBasicStroke = new BasicStroke(3f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
+            Rectangle2D cat_cover = new Rectangle2D.Float(cat_head_left_side-5, 225, 65, 70);
+            myGraphics2D.setColor(Color.GREEN);
+        }
+        catch(Exception e){ //Using a General Exception because a specific type of Exception is not working.
+            System.out.println("Looks like we just caught an exception!"); //I'm doing this to see if an exception is run into
+            //I'll keep in the Console as of now to let the user know what is happening.
+        }
     }
     public static void main (String[] args){
         CatSnake f = new CatSnake();
