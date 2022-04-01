@@ -35,7 +35,21 @@ public class CatSnake extends JFrame{
             Rectangle2D.Float grassRectangle = new Rectangle2D.Float(0, appletHeight/2, appletWidth, appletHeight/2);
             myGraphics2D.setColor(Color.green);
             myGraphics2D.fill(grassRectangle);
-            GradientPaint scannerFalzone = new GradientPaint(0,0, Color.CYAN, appletWidth-100, appletHeight-100, Color.WHITE, false);
+            Rectangle2D.Float skyRectangle = new Rectangle2D.Float(0, 0, appletWidth, appletHeight / 2);
+            Color ppman = new Color (53, 218, 255); //Made a new Color because I felt that the green would show better here
+            myGraphics2D.setPaint(ppman); //Makes Sky
+            myGraphics2D.fill(skyRectangle);
+            BasicStroke trunkStroke = new BasicStroke(5f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_ROUND);
+            Point2D.Float trunkTop = new Point2D.Float(appletWidth/2+50, appletHeight/2);
+            Point2D.Float trunkBottom = new Point2D.Float(appletWidth/2+50, appletHeight/2-60);
+            Line2D.Float trunkLine = new Line2D.Float(trunkTop, trunkBottom);
+            myGraphics2D.setColor(Color.DARK_GRAY);
+            myGraphics2D.setStroke(trunkStroke);
+            myGraphics2D.draw(trunkLine);
+            myGraphics2D.setColor(Color.GREEN);
+            myGraphics2D.fill(new Arc2D.Float((appletWidth/2)+10 , (appletHeight/2)-80 , 80, 50, 10f, 160f, Arc2D.CHORD));
+            myGraphics2D.setColor(Color.yellow);
+            myGraphics2D.fill(new Rectangle2D.Float(0, 0, 100, 100));
         }
     }
     public static void main (String[] args){
