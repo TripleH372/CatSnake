@@ -56,6 +56,13 @@ public class CatSnake extends JFrame{
             BasicStroke myBasicStroke = new BasicStroke(3f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
             Rectangle2D cat_cover = new Rectangle2D.Float(cat_head_left_side-5, 225, 65, 70);
             myGraphics2D.setColor(Color.GREEN);
+            myGraphics2D.fill(cat_cover);
+            cat_head_left_side=cat_head_left_side+CAT_MOVER;
+            cat_head_right_side=cat_head_right_side+CAT_MOVER;
+            cat_left_ear=cat_left_ear+CAT_MOVER;
+            cat_right_ear=cat_right_ear+CAT_MOVER;
+            cat_left_eye=cat_left_eye+CAT_MOVER;
+            cat_right_eye=cat_right_eye+CAT_MOVER;
         }
         catch(Exception e){ //Using a General Exception because a specific type of Exception is not working.
             System.out.println("Looks like we just caught an exception!"); //I'm doing this to see if an exception is run into
