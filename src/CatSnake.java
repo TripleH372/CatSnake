@@ -49,7 +49,8 @@ public class CatSnake extends JFrame{
             myGraphics2D.setColor(Color.GREEN);
             myGraphics2D.fill(new Arc2D.Float((appletWidth/2)+10 , (appletHeight/2)-80 , 80, 50, 10f, 160f, Arc2D.CHORD));
             myGraphics2D.setColor(Color.yellow);
-            myGraphics2D.fill(new Rectangle2D.Float(0, 0, 100, 100));
+            myGraphics2D.fill(new Ellipse2D.Float(appletWidth/10, appletHeight/10, 60f, 60f));
+            is_this_the_first_time=false; //Change to false because after the first time this won't be the first time anymore
         }
     }
     public static void main (String[] args){
@@ -58,3 +59,11 @@ public class CatSnake extends JFrame{
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
+
+/*Paragraph:
+This program starts by extending the JFrame.
+There is a Global Variable that concerns whether or not this is the first time through or not
+After the first time through, that variable changes to false.
+Then, the cat (or snake) is to move
+There is expected to be a method to clear
+ */
