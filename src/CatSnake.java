@@ -10,6 +10,7 @@ import javax.swing.*;
 public class CatSnake extends JFrame{
     private static final long serialVersionUID = 1L; //My dad suggested that I add this while we were doing the debugging process.
     public static final int CAT_MOVER = 20; //This will be a final static variable to move the cat (not object associated)
+    public static final float CAT_RADIUS_OR_DIAMETER = 10f; //This will be the height and width of a cat's eye accordingly
     boolean is_this_the_first_time = true; //change this to false when the first time is done
     int cat_head_left_side = 30;
     int cat_head_right_side = 80;
@@ -36,8 +37,8 @@ public class CatSnake extends JFrame{
             myGraphics2D.setColor(Color.green);
             myGraphics2D.fill(grassRectangle);
             Rectangle2D.Float skyRectangle = new Rectangle2D.Float(0, 0, appletWidth, appletHeight / 2);
-            Color ppman = new Color (53, 218, 255); //Made a new Color because I felt that the green would show better here
-            myGraphics2D.setPaint(ppman); //Makes Sky
+            GradientPaint myGradient = new GradientPaint(0, 0, Color.CYAN, appletWidth-100, appletHeight-100, Color.WHITE, false);
+            myGraphics2D.setPaint(myGradient); //Makes Sky
             myGraphics2D.fill(skyRectangle);
             BasicStroke trunkStroke = new BasicStroke(5f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_ROUND);
             Point2D.Float trunkTop = new Point2D.Float(appletWidth/2+50, appletHeight/2);
@@ -63,11 +64,29 @@ public class CatSnake extends JFrame{
             cat_right_ear=cat_right_ear+CAT_MOVER;
             cat_left_eye=cat_left_eye+CAT_MOVER;
             cat_right_eye=cat_right_eye+CAT_MOVER;
+            GeneralPath myGeneralPath = new GeneralPath();
+            myGeneralPath.moveTo(cat_head_left_side, 230f);
+            myGeneralPath.lineTo(cat_head_left_side, 290f);
+            myGeneralPath.lineTo(cat_head_right_side, 290f);
+            myGeneralPath.lineTo(cat_head_right_side, 230f);
+            myGeneralPath.lineTo(cat_right_ear, 245f);
+            myGeneralPath.lineTo(cat_left_ear, 245f);
+            myGeneralPath.closePath();
+            myGraphics2D.setStroke(myBasicStroke);
+            myGraphics2D.setColor(Color.RED);
+            myGraphics2D.draw(myGeneralPath);
+            Ellipse2D.Float l = new Ellipse2D.Float(cat_left_eye, 250, CAT_RADIUS_OR_DIAMETER, CAT_RADIUS_OR_DIAMETER);
+            Ellipse2D.Float r = new Ellipse2D.Float(cat_right_eye, 250, CAT_RADIUS_OR_DIAMETER, CAT_RADIUS_OR_DIAMETER);
+            myGraphics2D.setColor(Color.BLUE);
+            myGraphics2D.fill(l);
+            myGraphics2D.fill(r);
+            Thread.sleep(150); //This is a few milliseconds relatively
         }
         catch(Exception e){ //Using a General Exception because a specific type of Exception is not working.
             System.out.println("Looks like we just caught an exception!"); //I'm doing this to see if an exception is run into
             //I'll keep in the Console as of now to let the user know what is happening.
         }
+        if(cat_head_right_side < appletWidth-CAT_MOVER) repaint(); // this just makes sure that the right border is not too close to the end of the Frame
     }
     public static void main (String[] args){
         CatSnake f = new CatSnake();
@@ -78,8 +97,8 @@ public class CatSnake extends JFrame{
 
 /*Paragraph:
 This program starts by extending the JFrame.
-There is a Global Variable that concerns whether or not this is the first time through or not
+There is a Global Variable that concerns whether or not this is the first time through or not.
 After the first time through, that variable changes to false.
-Then, the cat (or snake) is to move
-There is expected to be a method to clear
+Then, the cat (or snake) is to move using a Try Catch Method.
+Rather than using a clear method, the cat itself moves.
  */
