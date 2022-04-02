@@ -80,7 +80,7 @@ public class CatSnake extends JFrame{
             myGraphics2D.setColor(Color.BLUE);
             myGraphics2D.fill(l);
             myGraphics2D.fill(r);
-            Thread.sleep(150); //This is a few milliseconds relatively
+            Thread.sleep(150); //50 milliseconds was way too fast. This seems just right.
         }
         catch(Exception e){ //Using a General Exception because a specific type of Exception is not working.
             System.out.println("Looks like we just caught an exception!"); //I'm doing this to see if an exception is run into
